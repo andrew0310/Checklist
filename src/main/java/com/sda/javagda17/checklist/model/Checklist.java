@@ -15,6 +15,7 @@ public class Checklist {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @Column(length = 50)
     private String name;
     private boolean archived;
     private LocalDateTime dateCreated;
