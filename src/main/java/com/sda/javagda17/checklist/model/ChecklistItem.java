@@ -3,11 +3,10 @@ package com.sda.javagda17.checklist.model;
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @Entity
@@ -21,4 +20,10 @@ public class ChecklistItem {
 
     @CreationTimestamp
     private LocalDateTime dateCompleted;
+
+    @ManyToOne
+    private Checklist checklist;
+
+    @OneToMany(mappedBy = "checklistItem", fetch = FetchType.EAGER)
+    private List<Notes> notesList = new ArrayList<>();
 }

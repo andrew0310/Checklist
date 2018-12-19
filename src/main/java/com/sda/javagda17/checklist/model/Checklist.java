@@ -2,11 +2,10 @@ package com.sda.javagda17.checklist.model;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @Entity
@@ -20,4 +19,7 @@ public class Checklist {
     private boolean archived;
     private LocalDateTime dateCreated;
     private LocalDateTime dateCompleted;
+
+    @OneToMany(mappedBy = "checklist", fetch = FetchType.EAGER)
+    private List<ChecklistItem> checklistItemList = new ArrayList<>();
 }
